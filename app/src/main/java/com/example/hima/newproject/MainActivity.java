@@ -1,5 +1,6 @@
 package com.example.hima.newproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,23 +11,59 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mUsername;
     private EditText mPassword;
-    private Button mButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         mUsername = (EditText) findViewById(R.id.username);
         mPassword = (EditText) findViewById(R.id.password);
-        mButton = (Button) findViewById(R.id.button);
+        Button mButton = (Button) findViewById(R.id.button);
         mButton.setOnClickListener(this);
     }
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.button:
-
+                if(validDateFields(mUsername)&&validDateFields(mPassword)){
+                    sendData();
+                }
                 break;
         }
+    }
+
+    /**
+     * checks if entered data is empty or the characters are less than 6!!
+     * @param editText EditText
+     * @return boolean
+     */
+    private boolean validDateFields(EditText editText) {
+        if(getString(editText).isEmpty()||getString(editText).length()<6) {
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    /**
+     * Transferring entered data to second screen
+     * entered data is username and password
+     */
+    private void sendData() {
+        Intent intent= new Intent(this,DashBoard.class);
+        intent.putExtra("username",getString(mUsername));
+        intent.putExtra("password",getString(mPassword));
+        startActivity(intent);
+    }
+
+    /**
+     * This method will returns string from edittext
+     * @param et EditText
+     * @return String
+     */
+    private  String getString(EditText et) {
+     return  et.getText().toString().trim();
     }
 }
