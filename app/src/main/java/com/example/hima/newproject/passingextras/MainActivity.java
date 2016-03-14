@@ -1,4 +1,4 @@
-package com.example.hima.newproject;
+package com.example.hima.newproject.passingextras;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,9 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.hima.newproject.R;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private EditText mUsername;
+    private EditText mUserName;
     private EditText mPassword;
 
     @Override
@@ -17,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mUsername = (EditText) findViewById(R.id.username);
+        mUserName = (EditText) findViewById(R.id.username);
         mPassword = (EditText) findViewById(R.id.password);
         Button mButton = (Button) findViewById(R.id.button);
         mButton.setOnClickListener(this);
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button:
-                if (validDateFields(mUsername) && validDateFields(mPassword)) {
+                if (validDateFields(mUserName) && validDateFields(mPassword)) {
                     sendData();
                 }
                 break;
@@ -55,8 +57,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private void sendData() {
         Intent intent = new Intent(this, DashBoard.class);
-        intent.putExtra("username", getString(mUsername));
-        intent.putExtra("password", getString(mPassword));
+        intent.putExtra("username",getString(mUserName));
+        intent.putExtra("password",getString(mPassword));
         startActivity(intent);
     }
 
@@ -67,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * @return String
      */
     private String getString(EditText et) {
-// TODO: 14-03-2016 need to check for null value
         return et.getText().toString().trim();
     }
 }
