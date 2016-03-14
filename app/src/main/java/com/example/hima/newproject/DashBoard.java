@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 public class DashBoard extends AppCompatActivity {
 
@@ -15,6 +16,13 @@ public class DashBoard extends AppCompatActivity {
         setContentView(R.layout.activity_dash_board);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Bundle bundle = getIntent().getExtras();
+        String user = bundle.getString("username");
+        String password = bundle.getString("password");
+
+        Toast.makeText(this, user + " " + password, Toast.LENGTH_SHORT).show();
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
