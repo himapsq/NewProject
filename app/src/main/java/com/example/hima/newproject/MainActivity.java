@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button:
-                if(validDateFields(mUsername)&&validDateFields(mPassword)){
+                if (validDateFields(mUsername) && validDateFields(mPassword)) {
                     sendData();
                 }
                 break;
@@ -36,34 +36,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * checks if entered data is empty or the characters are less than 6!!
+     *
      * @param editText EditText
      * @return boolean
      */
     private boolean validDateFields(EditText editText) {
-        if(getString(editText).isEmpty()||getString(editText).length()<6) {
+        if (getString(editText).isEmpty() || getString(editText).length() < 6) {
             return false;
-        }else {
+        } else {
             return true;
         }
     }
+
 
     /**
      * Transferring entered data to second screen
      * entered data is username and password
      */
     private void sendData() {
-        Intent intent= new Intent(this,DashBoard.class);
-        intent.putExtra("username",getString(mUsername));
-        intent.putExtra("password",getString(mPassword));
+        Intent intent = new Intent(this, DashBoard.class);
+        intent.putExtra("username", getString(mUsername));
+        intent.putExtra("password", getString(mPassword));
         startActivity(intent);
     }
 
     /**
-     * This method will returns string from edittext
+     * This method will takes and returns string from edittext
+     *
      * @param et EditText
      * @return String
      */
-    private  String getString(EditText et) {
-     return  et.getText().toString().trim();
+    private String getString(EditText et) {
+// TODO: 14-03-2016 need to check for null value
+        return et.getText().toString().trim();
     }
 }
