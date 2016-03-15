@@ -78,10 +78,6 @@ public class EmployeeDatabase {
             super(context, name, factory, version);
         }
 
-        /**
-         * using SQLiteDatabase we are writing a query for creating employee database table
-         * @param db
-         */
         @Override
         public void onCreate(SQLiteDatabase db) {
             String query = "create table trainer(" +

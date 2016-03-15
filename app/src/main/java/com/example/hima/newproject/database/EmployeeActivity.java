@@ -26,20 +26,14 @@ public class EmployeeActivity extends AppCompatActivity implements  View.OnClick
 
     private EditText mName, mSubject, mSalary;
     private Button mSave, mSend;
-    private EmployeeDatabase employeeDatabase;
-    private Cursor cursor;
-    private SimpleCursorAdapter simpleCursorAdapter;
-
-    /**
-     * initialization of all views , Cursor and SimpleCursorAdaptor
-     * @param savedInstanceState
-     */
+    private EmployeeDatabase mEmployeeDatabase;
+    private SimpleCursorAdapter mSimpleCursorAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);                                                                            
-        employeeDatabase = new EmployeeDatabase(this);
+        mEmployeeDatabase = new EmployeeDatabase(this);
         mName = (EditText) findViewById(R.id.name);
         mSubject = (EditText) findViewById(R.id.subject);
         mSalary = (EditText) findViewById(R.id.salary);
@@ -48,26 +42,22 @@ public class EmployeeActivity extends AppCompatActivity implements  View.OnClick
         mSend = (Button) findViewById(R.id.send1);
 
         //calling method open() for opening database --- method is written in "EmployeeDatabase" class
-        employeeDatabase.open();
+        mEmployeeDatabase.open();
 
         //getting details of entered data of employees into "Cursor"  and an userdefined method "getDetails"
-        cursor = employeeDatabase.getDetails();
+         Cursor cursor = mEmployeeDatabase.getDetails();
 
         /**
-         * assigning link with  "simpleCursorAdapter" and  xml file "employee_list_item"
+         * assigning link with  "mSimpleCursorAdapter" and  xml file "employee_list_item"
          * "employee_list_item" is for viewing each item in each list in listview
          */
-        simpleCursorAdapter = new SimpleCursorAdapter(this, R.layout.employee_list_item, cursor, new String[]{
-                EmployeeDatabase.FIELD_ID, "tname", "tsalary", "tsubject"},
+        mSimpleCursorAdapter = new SimpleCursorAdapter(this, R.layout.employee_list_item, cursor, new String[]{
+                EmployeeDatabase.FIELD_ID,EmployeeDatabase.FIELD_USERNAME, EmployeeDatabase.FIELD_USER_SALARY, EmployeeDatabase.FIELD_USER_SUBJECT},
                 new int[]{R.id.textview1,
                         R.id.textview2, R.id.textview3, R.id.textview4}, 0);
 
     }
 
-    /**
-     * Logic / actions for button click listeners
-     * @param v
-     */
     @Override
     public void onClick(View v) {
 
@@ -79,7 +69,7 @@ public class EmployeeActivity extends AppCompatActivity implements  View.OnClick
                 String tsalry = mSalary.getText().toString();
                 String tsubject = mSubject.getText().toString();
 
-                employeeDatabase.insertDetails(tname, Integer.parseInt(tsalry), tsubject);
+                mEmployeeDatabase.insertDetails(tname, Integer.parseInt(tsalry), tsubject);
                 Toast.makeText(EmployeeActivity.this, "Inserted successfully", Toast.LENGTH_LONG).show();
                 break;
 

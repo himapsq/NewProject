@@ -32,7 +32,11 @@ public class EmployeeDetailsActivity extends AppCompatActivity {
         m.open();
 
         c=m.getDetails();
-        s=new SimpleCursorAdapter(this, R.layout.employee_list_item,c,new String[]{"_id","tname","tsalary","tsubject"},new int[]{R.id.textview1,
+        s=new SimpleCursorAdapter(this, R.layout.employee_list_item,c,new String[]{EmployeeDatabase.FIELD_ID,
+                EmployeeDatabase.FIELD_USERNAME,
+                EmployeeDatabase.FIELD_USER_SALARY,
+                EmployeeDatabase.FIELD_USER_SUBJECT},
+                new int[]{R.id.textview1,
                 R.id.textview2,R.id.textview3,R.id.textview4},0);
 
         l1.setAdapter(s);
