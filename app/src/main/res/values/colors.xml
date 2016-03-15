@@ -3,4 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+<color name="edittext_color">#e3e8e3</color>
+    <color name="colorPassPrimary">#40c1ac</color>
+    <color name="colorPassPrimaryDark">#40c1ac</color>
+    <color name="colorPassAccent">#40c1ac</color>
+
+
+
 </resources>

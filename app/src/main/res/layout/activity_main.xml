@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPassPrimary"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -14,18 +15,45 @@
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username" />
+        android:layout_marginTop="@dimen/top_margin_height"
+        android:background="@color/edittext_color"
+        android:hint="@string/maiactivity_username"
+        android:minHeight="@dimen/min_height_edittext"
+        android:paddingLeft="@dimen/padding_left_right"
+        android:paddingRight="@dimen/padding_left_right"
+        android:textSize="@dimen/text_size_edittext" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="password"
-        android:inputType="textPassword" />
+        android:layout_marginTop="@dimen/top_marg"
+        android:background="@color/edittext_color"
+        android:hint="@string/maiactivity_password"
+        android:inputType="textPassword"
+        android:minHeight="@dimen/min_height_edittext"
+        android:paddingLeft="@dimen/padding_left_right"
+        android:paddingRight="@dimen/padding_left_right"
+        android:textSize="@dimen/text_size_edittext" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login" />
+        android:layout_marginTop="@dimen/top_marg_button"
+        android:background="@color/edittext_color"
+        android:minHeight="@dimen/min_height_edittext"
+        android:text="@string/maiactivity_password"
+        android:textColor="@color/colorPassPrimary"
+        android:textSize="@dimen/fontsize" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/top_marg_button"
+        android:background="@color/colorPassPrimary"
+        android:text="Not a member? Sign up now"
+        android:textColor="@color/edittext_color"
+        android:textSize="@dimen/fontsize" />
 </LinearLayout>

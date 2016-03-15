@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">FirstProject</string>
     <string name="title_activity_dash_board">DashBoard</string>
+
+    <!--MainActivity-->
+    <string name="maiactivity_username">Emain</string>
+    <string name="maiactivity_password">Password</string>
+    <string name="maiactivity_login">Login</string>
+
 </resources>

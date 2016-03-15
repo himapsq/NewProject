@@ -8,7 +8,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".passingextras.MainActivity">
+        <activity
+            android:name=".passingextras.MainActivity"
+            android:theme="@style/AppTheme_passingdata">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
