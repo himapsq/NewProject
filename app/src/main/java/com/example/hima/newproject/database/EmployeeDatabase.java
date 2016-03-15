@@ -11,12 +11,12 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class EmployeeDatabase {
     private final MyDbHelper dbHelper;
-    private static final String DATABASE_FILE_NAME = "pepper";
+    public static final String DATABASE_FILE_NAME = "pepper";
     public static final String FIELD_USERNAME = "tname";
-    private static final String FIELD_USER_SALARY = "tsalary";
-    private static final String FIELD_USER_SUBJECT = "tsubject";
+    public static final String FIELD_USER_SALARY = "tsalary";
+    public static final String FIELD_USER_SUBJECT = "tsubject";
     public static final String FIELD_ID = "tid";
-    private static final String TABLE_TRAINER = "trainertable";
+    public static final String TABLE_TRAINER = "trainertable";
 
 
     public EmployeeDatabase(Context context) {
