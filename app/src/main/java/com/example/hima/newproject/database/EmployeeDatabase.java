@@ -23,10 +23,10 @@ public class EmployeeDatabase {
         dbHelper = new MyDbHelper(context, DATABASE_FILE_NAME, null, 1);
     }
 
-    private SQLiteDatabase s;
+    private SQLiteDatabase sqLiteDatabase;
 
     public void open() {
-        s = dbHelper.getWritableDatabase();
+        sqLiteDatabase = dbHelper.getWritableDatabase();
     }
 
     public void insertDetails(String tname, int tsalary, String tsubject) {
@@ -34,13 +34,13 @@ public class EmployeeDatabase {
         cv.put(FIELD_USERNAME, tname);
         cv.put(FIELD_USER_SALARY, tsalary);
         cv.put(FIELD_USER_SUBJECT, tsubject);
-        s.insert(TABLE_TRAINER, null, cv);
+        sqLiteDatabase.insert(TABLE_TRAINER, null, cv);
     }
 
     public Cursor getDetails() {
-        Cursor c;
-        c = s.query(TABLE_TRAINER, null, null, null, null, null, null);
-        return c;
+        Cursor cursor;
+        cursor = sqLiteDatabase.query(TABLE_TRAINER, null, null, null, null, null, null);
+        return cursor;
     }
 
     private static class MyDbHelper extends SQLiteOpenHelper {
