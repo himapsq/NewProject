@@ -8,12 +8,15 @@ import android.widget.SimpleCursorAdapter;
 
 import com.example.hima.newproject.R;
 
+/**
+ * "EmployeeDetailsActivity" class  for displaying all data of entered employee details
+ */
 public class EmployeeDetailsActivity extends AppCompatActivity {
 
     ListView l1;
 
+    //giving link between "EmployeeDatabase" class and to this current class
     private EmployeeDatabase m=new EmployeeDatabase(this);
-
 
     Cursor c;
     SimpleCursorAdapter s;

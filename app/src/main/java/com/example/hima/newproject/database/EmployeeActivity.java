@@ -12,14 +12,28 @@ import android.widget.Toast;
 
 import com.example.hima.newproject.R;
 
-public class EmployeeActivity extends AppCompatActivity {
+/**
+ * Views are 3 edittexts and 2 buttons
+ * mName----------- 1st edittext to enter employee name
+ * mSalary--------- 2nd edittext to enter employee saalry
+ * mSubject-------- 3rd edittext to enter employee subject
+ *
+ * mSave-------- 1st button for saving data into the database after entering details
+ * mSend-------- 2nd button for moving to next screen,, in 2nd screen entered details are displayed
+ */
+
+public class EmployeeActivity extends AppCompatActivity implements  View.OnClickListener {
 
     private EditText mName, mSubject, mSalary;
-    private Button save, send;
+    private Button mSave, mSend;
     private EmployeeDatabase employeeDatabase;
     private Cursor cursor;
     private SimpleCursorAdapter simpleCursorAdapter;
 
+    /**
+     * initialization of all views , Cursor and SimpleCursorAdaptor
+     * @param savedInstanceState
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,36 +44,50 @@ public class EmployeeActivity extends AppCompatActivity {
         mSubject = (EditText) findViewById(R.id.subject);
         mSalary = (EditText) findViewById(R.id.salary);
 
-        save = (Button) findViewById(R.id.save1);
-        send = (Button) findViewById(R.id.send1);
+        mSave = (Button) findViewById(R.id.save1);
+        mSend = (Button) findViewById(R.id.send1);
 
+        //calling method open() for opening database --- method is written in "EmployeeDatabase" class
         employeeDatabase.open();
 
+        //getting details of entered data of employees into "Cursor"  and an userdefined method "getDetails"
         cursor = employeeDatabase.getDetails();
+
+        /**
+         * assigning link with  "simpleCursorAdapter" and  xml file "employee_list_item"
+         * "employee_list_item" is for viewing each item in each list in listview
+         */
         simpleCursorAdapter = new SimpleCursorAdapter(this, R.layout.employee_list_item, cursor, new String[]{
                 EmployeeDatabase.FIELD_ID, "tname", "tsalary", "tsubject"},
                 new int[]{R.id.textview1,
                         R.id.textview2, R.id.textview3, R.id.textview4}, 0);
 
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    }
+
+    /**
+     * Logic / actions for button click listeners
+     * @param v
+     */
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+
+            //for saving data into the database after entering details
+            case R.id.save1:
                 String tname = mName.getText().toString();
                 String tsalry = mSalary.getText().toString();
                 String tsubject = mSubject.getText().toString();
 
                 employeeDatabase.insertDetails(tname, Integer.parseInt(tsalry), tsubject);
                 Toast.makeText(EmployeeActivity.this, "Inserted successfully", Toast.LENGTH_LONG).show();
-            }
-        });
+                break;
 
-        send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            //for moving to next screen,, in 2nd screen entered details are displayed
+            case  R.id.send1:
                 Intent intent = new Intent(EmployeeActivity.this, EmployeeDetailsActivity.class);
                 startActivity(intent);
-
-            }
-        });
+                break;
+        }
     }
 }
