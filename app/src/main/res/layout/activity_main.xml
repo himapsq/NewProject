@@ -53,7 +53,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/top_marg_button"
         android:background="@color/colorPassPrimary"
-        android:text="Not a member? Sign up now"
+        android:text="@string/maiactivity_textview_text"
         android:textColor="@color/edittext_color"
         android:textSize="@dimen/fontsize" />
 </LinearLayout>

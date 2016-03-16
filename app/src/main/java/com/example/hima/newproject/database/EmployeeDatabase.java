@@ -42,6 +42,7 @@ public class EmployeeDatabase {
      * user defined method for opening the file
      */
     public void open() {
+
         sqLiteDatabase = dbHelper.getWritableDatabase();
     }
 

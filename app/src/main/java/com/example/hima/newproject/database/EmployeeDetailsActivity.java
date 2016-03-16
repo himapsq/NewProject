@@ -13,13 +13,13 @@ import com.example.hima.newproject.R;
  */
 public class EmployeeDetailsActivity extends AppCompatActivity {
 
-    ListView l1;
+    ListView listView;
 
     //giving link between "EmployeeDatabase" class and to this current class
-    private EmployeeDatabase m=new EmployeeDatabase(this);
+    private EmployeeDatabase mEmployeeDatabase;
 
-    Cursor c;
-    SimpleCursorAdapter s;
+    Cursor cursor;
+    SimpleCursorAdapter simpleCursorAdapter;
 
 
     @Override
@@ -27,20 +27,21 @@ public class EmployeeDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.employee_list_activity);
 
-        l1= (ListView) findViewById(R.id.listView);
+        listView = (ListView) findViewById(R.id.listView);
+        mEmployeeDatabase =new EmployeeDatabase(this);
+        mEmployeeDatabase.open();
 
-        m.open();
-
-        c=m.getDetails();
-        s=new SimpleCursorAdapter(this, R.layout.employee_list_item,c,new String[]{EmployeeDatabase.FIELD_ID,
+        cursor = mEmployeeDatabase.getDetails();
+        simpleCursorAdapter =new SimpleCursorAdapter(this, R.layout.employee_list_item, cursor,new String[]
+                {EmployeeDatabase.FIELD_ID,
                 EmployeeDatabase.FIELD_USERNAME,
                 EmployeeDatabase.FIELD_USER_SALARY,
                 EmployeeDatabase.FIELD_USER_SUBJECT},
                 new int[]{R.id.textview1,
                 R.id.textview2,R.id.textview3,R.id.textview4},0);
 
-        l1.setAdapter(s);
-        s.changeCursor(c);
+        listView.setAdapter(simpleCursorAdapter);
+        simpleCursorAdapter.changeCursor(cursor);
 
     }
 }

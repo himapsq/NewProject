@@ -5,6 +5,7 @@
     <!--MainActivity-->
     <string name="maiactivity_username">Emain</string>
     <string name="maiactivity_password">Password</string>
+    <string name="maiactivity_textview_text">New user? sign up</string>
     <string name="maiactivity_login">Login</string>
 
 </resources>

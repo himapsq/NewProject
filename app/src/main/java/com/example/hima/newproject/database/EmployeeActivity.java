@@ -51,9 +51,9 @@ public class EmployeeActivity extends AppCompatActivity implements  View.OnClick
          * assigning link with  "mSimpleCursorAdapter" and  xml file "employee_list_item"
          * "employee_list_item" is for viewing each item in each list in listview
          */
-        mSimpleCursorAdapter = new SimpleCursorAdapter(this, R.layout.employee_list_item, cursor, new String[]{
-                EmployeeDatabase.FIELD_ID,EmployeeDatabase.FIELD_USERNAME, EmployeeDatabase.FIELD_USER_SALARY, EmployeeDatabase.FIELD_USER_SUBJECT},
-                new int[]{R.id.textview1,
+        mSimpleCursorAdapter = new SimpleCursorAdapter(this, R.layout.employee_list_item, cursor,
+                new String[]{EmployeeDatabase.FIELD_ID,EmployeeDatabase.FIELD_USERNAME, EmployeeDatabase.FIELD_USER_SALARY,
+                        EmployeeDatabase.FIELD_USER_SUBJECT}, new int[]{R.id.textview1,
                         R.id.textview2, R.id.textview3, R.id.textview4}, 0);
 
     }
